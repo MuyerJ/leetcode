@@ -7,8 +7,11 @@ package com.muyer.util;
  */
 public class CommonUtil {
     public static void swap(int[] array, int a, int b) {
-        array[a] = array[a] ^ array[b];
-        array[b] = array[a] ^ array[b];
-        array[a] = array[a] ^ array[b];
+        //array[a] = array[a] ^ array[b];
+        //array[b] = array[a] ^ array[b];
+        //array[a] = array[a] ^ array[b];
+        int t = array[a];
+        array[a] = array[b];
+        array[b] = t;
     }
 }
