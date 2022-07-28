@@ -40,8 +40,34 @@ public class HeapSort {
         int[] array2 = {5, 3, 2, 1, 4, 8, 9};
         for (int i = 0; i < array2.length; i++) {
             heapify(array2, i, array2.length);
-            PrintUtil.printIntArray(array2);
+            //PrintUtil.printIntArray(array2);
         }
+
+        //测试堆排序
+        int[] array3 = {5, 3, 2, 1, 4, 8, 9};
+        heapSort(array3);
+        PrintUtil.printIntArray(array3);
+    }
+
+    public static void heapSort(int[] arr) {
+        //边界条件
+
+        //堆排序
+        //1.数组形成堆
+        for (int i = 0; i < arr.length; i++) {
+            //对每一个节点都进行heapify
+            heapInsert(arr,i);
+        }
+
+        //2.进行交换排序
+        for (int i = arr.length - 1; i >= 0; i--) {
+            //堆的根和堆最后一个节点交换
+            CommonUtil.swap(arr, 0, i);
+            //堆的根 heapify
+            heapify(arr, 0, i - 1);
+        }
+
+
     }
 
     /**
