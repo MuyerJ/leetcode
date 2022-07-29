@@ -14,4 +14,14 @@ public class PrintUtil {
         }
         System.out.println(sb);
     }
+
+    public static void printListNode(ListNode head) {
+        ListNode p = head;
+        StringBuilder sb = new StringBuilder();
+        while (p!=null){
+            sb.append(p.val).append(",");
+            p = p.next;
+        }
+        System.out.println(sb);
+    }
 }
