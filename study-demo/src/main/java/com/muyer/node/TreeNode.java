@@ -1,7 +1,9 @@
 package com.muyer.node;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  *@描述
@@ -30,8 +32,8 @@ public class TreeNode {
     }
 
     public static void main(String[] args) {
-        TreeNode treeNode = buildTree(new Integer[]{1, null, 2, 3, 4, 5});
-        //System.out.println(treeNode);
+        TreeNode treeNode = levelBuildTree(new Integer[]{1, null, 2, null, null, 5});
+        System.out.println(treeNode);
     }
 
     /**
@@ -39,34 +41,27 @@ public class TreeNode {
      * @param array
      * @return
      */
-    public static TreeNode buildTree(Integer[] array) {
-        List<TreeNode> list = new ArrayList<TreeNode>();      //用一个集合来存放每一个Node
-        for (int i = 0; i < array.length; i++) {
-            TreeNode node = new TreeNode(array[i], null, null);    //创建结点，每一个结点的左结点和右结点为null
-            list.add(node); // list中存着每一个结点
-        }
-        // 构建二叉树
-        if (list.size() > 0) {
-            for (int i = 0; i < array.length / 2 - 1; i++) {       // i表示的是根节点的索引，从0开始
-                if (list.get(2 * i + 1) != null) {
-                    // 左结点
-                    list.get(i).left = list.get(2 * i + 1);
-                }
-                if (list.get(2 * i + 2) != null) {
-                    // 右结点
-                    list.get(i).right = list.get(2 * i + 2);
-                }
+    public static TreeNode levelBuildTree(Integer[] array) {
+        TreeNode root = new TreeNode(array[0]);
+        TreeNode p = root;
+
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        int i = 0;
+        while (p != null || !queue.isEmpty()) {
+            //左边
+            if ((2 * i + 1) < array.length && p != null) {
+                p.left = array[2 * i + 1] == null ? null : new TreeNode(array[2 * i + 1]);
+                queue.add(p.left);
             }
-            // 判断最后一个根结点：因为最后一个根结点可能没有右结点，所以单独拿出来处理
-            int lastIndex = array.length / 2 - 1;
-            // 左结点
-            list.get(lastIndex).left = list.get(lastIndex * 2 + 1);
-            // 右结点，如果数组的长度为奇数才有右结点
-            if (array.length % 2 == 1) {
-                list.get(lastIndex).right = list.get(lastIndex * 2 + 2);
+            //右边
+            if ((2 * i + 2) < array.length && p != null) {
+                p.right = array[2 * i + 2] == null ? null : new TreeNode(array[2 * i + 2]);
+                queue.add(p.right);
             }
+            p = queue.poll();
+            i++;
         }
-        return list.get(0);
+        return root;
     }
 
     public static TreeNode buildTree() {
