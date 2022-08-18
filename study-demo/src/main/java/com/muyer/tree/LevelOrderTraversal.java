@@ -7,17 +7,17 @@ import java.util.Queue;
 
 /**
  *@描述
- *@创建人 yejiang
+ *@创建人 yejiang 层次
  *@创建时间 2022/8/11 17:24
  */
-public class WidthOrderTraversal {
+public class LevelOrderTraversal {
 
     public static void main(String[] args) {
         TreeNode root = TreeNode.buildTree();
-        widthTraversal(root);
+        levelTraversal(root);
     }
 
-    public static void widthTraversal(TreeNode root) {
+    public static void levelTraversal(TreeNode root) {
         if (root == null) {
             return;
         }
