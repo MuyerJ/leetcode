@@ -1,10 +1,12 @@
 package com.muyer.tree;
 
+import com.muyer.node.ListNode;
 import com.muyer.node.TreeNode;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  *@描述
@@ -14,26 +16,10 @@ import java.util.LinkedList;
 public class InOrderTraversal {
 
     public static void main(String[] args) {
-        /**
-         *
-         *       r1
-         *     r2   r3
-         *   r4    r5
-         */
-        TreeNode r1 = new TreeNode(1);
-        TreeNode r2 = new TreeNode(2);
-        TreeNode r3 = new TreeNode(3);
-        TreeNode r4 = new TreeNode(4);
-        TreeNode r5 = new TreeNode(5);
-
-        r1.left = r2;
-        r1.right = r3;
-        r2.left = r4;
-        r3.left = r5;
-
-        inOrder1(r1);
+        TreeNode root = TreeNode.buildTree();
+        inOrder1(root);
         System.out.println("==========================");
-        inOrder2(r1);
+        inOrder2(root);
 
     }
 
@@ -52,7 +38,7 @@ public class InOrderTraversal {
 
 
     public static void inOrder2(TreeNode root) {
-        Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
+        LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
         //根节点不为null 或 栈不为null
         while (root != null || !stack.isEmpty()) {
             //左子树入栈
@@ -65,5 +51,14 @@ public class InOrderTraversal {
             System.out.println(root.val);
             root = root.right;
         }
+    }
+
+    //中序遍历
+    public static void inOrder3(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        LinkedList<ListNode> stack = new LinkedList<ListNode>();
+
     }
 }
