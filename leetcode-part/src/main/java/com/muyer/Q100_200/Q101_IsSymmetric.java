@@ -2,7 +2,7 @@ package com.muyer.Q100_200;
 
 import com.muyer.util.TreeNode;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  *@描述
@@ -45,5 +45,36 @@ public class Q101_IsSymmetric {
         }
         return true;
 
+    }
+
+    public boolean isSymmetric2(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            List<Integer> list = new ArrayList<Integer>();
+            for(int i=0;i<size;i++){
+                TreeNode cur = queue.poll();
+                if(cur == null){
+                    continue;
+                }
+                queue.add(cur.left);
+                queue.add(cur.right);
+                list.add(cur.left == null ? null : cur.left.val);
+                list.add(cur.right == null ? null : cur.right.val);
+            }
+            //判断数组的对称性
+            int left = 0;
+            int right = list.size() - 1;
+            while(left < right){
+                if(list.get(left) != list.get(right)){
+                    return false;
+                }
+                left++;
+                right--;
+            }
+
+        }
+        return true;
     }
 }
