@@ -14,7 +14,7 @@ public class ComparatorDemo {
     public static void main(String[] args) {
         Integer[] nums = new Integer[]{4, 3, 2, 8, 2, 3};
         //Arrays.sort(nums,new IntDesComparator());
-        Arrays.sort(nums, (o1, o2) -> o2 - o1);
+        //Arrays.sort(nums, (o1, o2) -> o2 - o1);
         PrintUtil.printIntegerArray(nums);
     }
 
