@@ -12,8 +12,8 @@ import java.util.*;
 public class Q99_恢复二叉搜索树 {
     public void recoverTree(TreeNode root) {
         //收集所有节点，并且排好序
-        List<Integer> list = new ArrayList<>();
-        Queue<TreeNode> queue = new LinkedList<>();
+        List<Integer> list = new ArrayList<Integer>();
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.add(root);
         while (!queue.isEmpty()) {
             TreeNode cur = queue.poll();
@@ -28,7 +28,7 @@ public class Q99_恢复二叉搜索树 {
         Collections.sort(list);
         //中序遍历赋值
         int index = 0;
-        Stack<TreeNode> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
         while (root != null || !stack.isEmpty()) {
             while (root != null) {
                 stack.add(root);

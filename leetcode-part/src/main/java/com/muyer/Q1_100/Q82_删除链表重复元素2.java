@@ -16,7 +16,7 @@ public class Q82_删除链表重复元素2 {
             return head;
         }
         ListNode hair = new ListNode(-1, head);
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> set = new HashSet<Integer>();
         ListNode p = head;
         while (p.next != null) {
             if (p.val == p.next.val) {
