@@ -22,11 +22,11 @@ public class Q438_找到字符串中所有字母异位词 {
         System.out.println(s.length());
         System.out.println(p.length());
         if(s.length() < p.length()) {
-            return new ArrayList<>();
+            return new ArrayList<Integer>();
         }
-        Map<Character,Integer> countMap = new HashMap<>();
+        Map<Character,Integer> countMap = new HashMap<Character,Integer>();
         //初始化窗口范围的统计
-        Map<Character,Integer> countMap2 = new HashMap<>();
+        Map<Character,Integer> countMap2 = new HashMap<Character,Integer>();
         for(int i=0 ; i<p.length() ; i++){
             char c = p.charAt(i);
             char c1 = s.charAt(i);
@@ -35,7 +35,7 @@ public class Q438_找到字符串中所有字母异位词 {
         }
         System.out.println(countMap.get('a'));
         System.out.println(countMap2.get('a'));
-        List<Integer> res = new ArrayList<>();
+        List<Integer> res = new ArrayList<Integer>();
         int left = 0;
         int right = p.length() - 1;
         while(right < s.length()){
